@@ -1,4 +1,3 @@
-
 <div ngController="loginController">
     <div align="center"><img src="images/iso.png" class="img-responsive" alt="Responsive image"/></div>
     <center><h1>#MyApp#</h1></center><br/>
@@ -23,8 +22,27 @@
                         <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required="">
                     </div>
                     <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignIn($event)" class="btn btn-lg btn-primary btn-block">SignIn</button>
+
+
+                        <br>
+
+                        <a class="btn btn-block btn-social btn-google" ng-click="SignInGoogle($event)">
+                        <span class="fa fa-google"></span> Iniciar Sesion con Google
+                        </a>
+
+                         <a class="btn btn-block btn-social btn-facebook" ng-click="facebook($event)">
+                         <span class="fa fa-facebook"></span> Iniciar Sesion con Facebook
+                         </a>
+
+                         <a class="btn btn-block btn-social btn-github" ng-click="SignInGit($event)">
+                         <span class="fa fa-github"></span> Iniciar Sesion con Github
+                         </a>
+
+
+
+
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
 </div>

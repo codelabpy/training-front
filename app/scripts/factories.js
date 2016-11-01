@@ -30,21 +30,108 @@ angular.module('pasantiaApp')
       var storageFile = firebase.storage().ref();
       var CURSOR = [];
 
-    var database = {};
+      var database = {};
 
       //funcion que inicia la sesion en el firebase
       var iniciarSesion = function (email, password){
+        console.log("iniciar sesion");
+        console.log(email + " " + password);
 
-        authObj.$signInWithEmailAndPassword(email, password)
-          .then(function (user) {
+        //var provider = new firebase.auth.TwitterAuthProvider();
+
+        /*authObj.$signInWithEmailAndPassword(email, password)
+          .then(function (user1) {
             //$rootScope.cargarRolPermisos(email);
             $state.go("template1");
             console.log("autenticación exitosa");
           })
           .catch(function (error) {
             mensajeError(error);
-          })
+          })*/
+};
+      var iniciarSesionFacebook = function(){
+        $rootScope.ERROR = [];
+        console.log("login con facebook");
+
+        var provider = new firebase.auth.FacebookAuthProvider();
+        //var provider = new firebase.auth.FacebookAuthProvider();
+        console.log("entro1");
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          console.log("entro2");
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        $state.go("template1");
+        // ...
+        }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+       });
+
       };
+var iniciarSesionGoogle = function(){
+        $rootScope.ERROR = [];
+        console.log("login con google");
+        var provider = new firebase.auth.GoogleAuthProvider();
+        //var provider = new firebase.auth.FacebookAuthProvider();
+        console.log("entro1");
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          console.log("entro en popup");
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+        $state.go("template1");
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+
+      };
+
+      var iniciarSesionGit = function(){
+        $rootScope.ERROR = [];
+        console.log("login con git");
+        var provider = new firebase.auth.GithubAuthProvider();
+        console.log("entro1");
+
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          $state.go("template1");
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+
+      };
+
+
+
+
 
 
       //funcion manejo de errores propios del firebase
@@ -95,9 +182,32 @@ angular.module('pasantiaApp')
 
       login: function(email, password){
         $rootScope.ERROR = [];
-            console.log("login");
-            iniciarSesion(email, password);
+        console.log("login");
+        iniciarSesion(email, password);
       },
+
+      loginGoogle: function(){
+        $rootScope.ERROR = [];
+        console.log("login google");
+        iniciarSesionGoogle();
+      },
+
+      loginFacebook: function(){
+        $rootScope.ERROR = [];
+        console.log("login facebook");
+        iniciarSesionFacebook();
+      },
+
+      loginGit: function(){
+        $rootScope.ERROR = [];
+        console.log("login git");
+        iniciarSesionGit();
+      },
+
+
+
+
+
 
       //cerramos la sesion del usuario
       logout: function(){
@@ -186,5 +296,5 @@ angular.module('pasantiaApp')
       get: function (key) {
         return mem[key];
       }
-    };
+    }
   });
