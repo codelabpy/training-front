@@ -71,6 +71,17 @@ pasantiaApp.controller("loginController", ["$scope",'dbFire', '$rootScope',
       var email = $scope.user.email;
       var password = $scope.user.password;
       dbFire.login(email, password);
+
     }
+  $scope.SignInG = function(e) {
+      e.preventDefault();
+      $rootScope.ERROR = '';
+      var email = $scope.user.email;
+      var password = $scope.user.password;
+      dbFire.glogin(email, password);
+      
+    }
+
   }
+
 ]);
