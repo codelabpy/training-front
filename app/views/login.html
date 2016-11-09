@@ -22,7 +22,13 @@
                     <div class="form-group" >
                         <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required="">
                     </div>
-                    <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignIn($event)" class="btn btn-lg btn-primary btn-block">SignIn</button>
+                     <a class="btn btn-block btn-social btn-google" ng-disabled="!user.email || !user.password" ng-click="SignIn($event)">
+                     <span class="fa fa-google"></span> Ingresar con Google  </a>
+                   
+                     <a class="btn btn-block btn-social btn-facebook" ng-click="facebook($event)">
+                     <span class="fa fa-facebook"></span> Ingresar con facebook  </a>
+                   
+                   
                 </form>
             </div>
         </div>
