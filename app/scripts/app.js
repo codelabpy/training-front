@@ -71,6 +71,37 @@ pasantiaApp.controller("loginController", ["$scope",'dbFire', '$rootScope',
       var email = $scope.user.email;
       var password = $scope.user.password;
       dbFire.login(email, password);
+    },
+
+    $scope.SignInGoogle = function(e){
+      console.log("entra en google");
+      e.preventDefault();
+      $rootScope.ERROR = '';
+      dbFire.loginGoogle();
+    },
+
+    $scope.SignInFacebook  = function(e){
+      console.log("entra en Facebook");
+      e.preventDefault();
+      $rootScope.ERROR = '';
+      dbFire.loginFacebook();
+    },
+
+    $scope.SignInGit  = function(e){
+      console.log("entra en git");
+      e.preventDefault();
+      $rootScope.ERROR = '';
+      dbFire.loginGit();
+    },
+
+    $scope.SignInTwitter  = function(e){
+      console.log("entra en Twitter");
+      e.preventDefault();
+      $rootScope.ERROR = '';
+      dbFire.loginTwitter();
     }
+
+
   }
+  
 ]);

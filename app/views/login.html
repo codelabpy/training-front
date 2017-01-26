@@ -1,4 +1,6 @@
 
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 <div ngController="loginController">
     <div align="center"><img src="images/iso.png" class="img-responsive" alt="Responsive image"/></div>
     <center><h1>#MyApp#</h1></center><br/>
@@ -23,8 +25,28 @@
                         <input ng-model="user.password" type="password" class="form-control" placeholder="Password" required="">
                     </div>
                     <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignIn($event)" class="btn btn-lg btn-primary btn-block">SignIn</button>
+
+
+                   
+                    <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignInGoogle($event)" class="btn btn-block btn-social btn-google"> 
+                    <span class="fa fa-google"></span> SignInGoogle  
+                    </button>
+                    
+                    <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignInFacebook($event)" class="btn btn-block btn-social btn-facebook"> 
+                    <span class="fa fa-facebook"></span> SignInFacebook  
+                    </button>
+
+                    <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignInGit($event)" class="btn btn-block btn-social btn-github"> 
+                    <span class="fa fa-github"></span> SignInGit  
+                    </button>
+
+                    <button ng-disabled="!user.email || !user.password" type="button" ng-click="SignInTwitter($event)" class="btn btn-block btn-social btn-twitter"> 
+                    <span class="fa fa-twitter"></span> SignInTwitter  
+                    </button>
+
+
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
